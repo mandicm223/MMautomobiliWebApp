@@ -12,7 +12,7 @@ services:
   #   env_file:
   #     - web/.env
   #   ports:
-  #     - "8001:8020"
+  #     - "8002:8020"
   #   command: sh -c "chmod +x /app/migrate.sh && sh /app/migrate.sh && /app/entrypoint.sh"
   postgres_db:
     image: postgres
