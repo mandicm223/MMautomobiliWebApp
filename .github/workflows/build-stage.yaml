@@ -29,7 +29,7 @@ jobs:
       working-directory: ./web
       run: |
         docker build -f Dockerfile \
-          -t registry.digitalocean.com/django-kubernetes-s3-webapp/django_s3_kuberneetes_webapp:latest .
+          -t registry.digitalocean.com/djangos3kuberneeteswebapp/django_s3_kuberneetes_webapp:latest .
     - name: push image
       run: |
-        docker push registry.digitalocean.com/django-kubernetes-s3-webapp/django_s3_kuberneetes_webapp:latest
+        docker push registry.digitalocean.com/djangos3kuberneeteswebapp/django_s3_kuberneetes_webapp:latest
