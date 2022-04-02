@@ -35,8 +35,8 @@ jobs:
         docker push registry.digitalocean.com/djangos3kuberneeteswebapp/django_s3_kuberneetes_webapp:latest
     - name: K8s cluster kubeconfig file with/ short-lived creds
       run: |
-          doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ env.CLUSTER_NAME }}
-    - name: Update deployment secrets
+          doctl kubernetes cluster kubeconfig save --expiry-seconds 600 djangos3kuberneeteswebapp
+    - name: Update deployment secret
       run: |
           cat << EOF >> web/.env.prod
           AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -60,3 +60,9 @@ jobs:
     - name: Wait for rollout to finish
       run: |
         kubectl rollout status deployment/django-kuberenets-s3-webapp-deployment
+    - name: Migrate DB and collect static
+      run: |
+        export SINGLE_POD_NAME=$(kubectl get pod -l
+        app=django-kuberenets-s3-webapp-deployment -o jsonpath="{.items[0].metadata.name}")
+        kubectl exec -it $SINGLE_POD_NAME -- bash /app/migrate.sh
+        kubectl exec -it $SINGLE_POD_NAME -- bash /app/collectstatic.sh
