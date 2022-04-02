@@ -1,0 +1,19 @@
+name: Django CI and Postgres
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  django_test:
+    uses: mandicm223/django_s3_kuberneetes_webapp/.github/workflows/django-test.yaml@main
+  docker-build:
+    runs-on: ubuntu-latest
+    env:
+      DJANGO_SECRET_KEY: testingkey
+    steps:
+    - uses: actions/checkout@v3
