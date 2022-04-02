@@ -59,7 +59,6 @@ jobs:
         kubectl rollout status deployment/django-kuberenets-s3-webapp-deployment
     - name: Migrate DB and collect static
       run: |
-        export SINGLE_POD_NAME=$(kubectl get pod -l
-        app=django-kuberenets-s3-webapp-deployment -o jsonpath="{.items[0].metadata.name}")
+        export SINGLE_POD_NAME=$(kubectl get pod -l app=django-kuberenets-s3-webapp-deployment -o jsonpath="{.items[0].metadata.name}")
         kubectl exec -it $SINGLE_POD_NAME -- bash /app/migrate.sh
         kubectl exec -it $SINGLE_POD_NAME -- bash /app/collectstatic.sh
