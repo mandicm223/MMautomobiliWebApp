@@ -4,5 +4,9 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+    "settings": {
+        "terminal.integrated.env.windows": {
+            "KUBECONFIG": "${workspaceFolder}\\.kube\\kubeconfig.yaml"
+        },
+    }
 }

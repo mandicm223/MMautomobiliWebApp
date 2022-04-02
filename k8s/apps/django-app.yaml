@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-kuberenets-s3-webapp-deployment
+  labels:
+    app: django-kuberenets-s3-webapp-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: django-kuberenets-s3-webapp-deployment
+  template:
+    metadata:
+      labels:
+        app: django-kuberenets-s3-webapp-deployment
+    spec:
+      containers:
+      - name: django-kuberenets-s3-webapp
+        image: registry.digitalocean.com/django-kubernetes-s3-webapp/django_s3_kuberneetes_webapp:latest
+        envFrom:
+          - secretRef:
+              name: django-s3-kubernetes-webapp-prod-env
+        env:
+          - name: PORT
+            value: "8001"
+        ports:
+        - containerPort: 8001
+      imagePullSecrets:
+        - name: django-kubernetes-s3-webapp 
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: django-kuberenets-s3-webapp-service
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 8001
+  selector:
+    app: django-kuberenets-s3-webapp-deployment
+    

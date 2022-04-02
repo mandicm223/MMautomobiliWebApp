@@ -1,19 +1,19 @@
 version: "3.9"
 services:
-  # web:
-  #   depends_on:
-  #     - postgres_db
-  #   build: 
-  #     context: ./web
-  #     dockerfile: Dockerfile
-  #   image: django_s3_kuberneetes_webapp:v1
-  #   environment: 
-  #     - PORT=8020
-  #   env_file:
-  #     - web/.env
-  #   ports:
-  #     - "8002:8020"
-  #   command: sh -c "chmod +x /app/migrate.sh && sh /app/migrate.sh && /app/entrypoint.sh"
+  web:
+    depends_on:
+      - postgres_db
+    build: 
+      context: ./web
+      dockerfile: Dockerfile
+    image: django_s3_kuberneetes_webapp:v1
+    environment: 
+      - PORT=8020
+    env_file:
+      - web/.env
+    ports:
+      - "8002:8020"
+    command: sh -c "chmod +x /app/migrate.sh && sh /app/migrate.sh && /app/entrypoint.sh"
   postgres_db:
     image: postgres
     restart: always 

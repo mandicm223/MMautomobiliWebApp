@@ -1,4 +1,6 @@
 web/.env
+web/.env.prod
+.kube/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
