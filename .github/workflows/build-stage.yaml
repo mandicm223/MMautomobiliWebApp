@@ -9,11 +9,8 @@ on:
     branches: [main]
 
 jobs:
-  django_test:
-    uses: mandicm223/django_s3_kuberneetes_webapp/.github/workflows/django-test.yaml@main
   build:
     runs-on: ubuntu-latest
-    needs: [django_test]
     env:
       DJANGO_SECRET_KEY: testingkey
     steps:
