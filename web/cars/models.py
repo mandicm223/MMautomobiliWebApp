@@ -114,8 +114,8 @@ class Car(models.Model):
     milage = models.IntegerField()
     fuel_type = models.CharField(max_length=50)
     no_of_owners = models.CharField(max_length=100)
-    is_featured = models.BooleanField(default=False)
-    created_date = models.DateTimeField(default=datetime.now() , blank=True)
+    is_featured = models.BooleanField()
+    created_date = models.DateTimeField(blank=True)
 
     def __str__(self):
         return self.car_title
