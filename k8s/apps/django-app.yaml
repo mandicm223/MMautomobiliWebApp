@@ -23,9 +23,9 @@ spec:
               name: django-s3-kubernetes-webapp-prod-env
         env:
           - name: PORT
-            value: "8001"
+            value: "8002"
         ports:
-        - containerPort: 8001
+        - containerPort: 8002
       imagePullSecrets:
         - name: djangos3kuberneeteswebapp
 
@@ -40,7 +40,7 @@ spec:
     - name: http
       protocol: TCP
       port: 80
-      targetPort: 8001
+      targetPort: 8002
   selector:
     app: django-kuberenets-s3-webapp-deployment
     
