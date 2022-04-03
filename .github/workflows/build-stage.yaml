@@ -22,14 +22,6 @@ jobs:
         token: ${{ secrets.DO_API_TOKEN_KEY }}
     - name: login to DO container registry
       run: doctl registry login --expiry-seconds 1200
-    - name: Build docker container image
-      working-directory: ./web
-      run: |
-        docker build -f Dockerfile \
-          -t registry.digitalocean.com/djangos3kuberneeteswebapp/django_s3_kuberneetes_webapp:latest .
-    - name: push image
-      run: |
-        docker push registry.digitalocean.com/djangos3kuberneeteswebapp/django_s3_kuberneetes_webapp:latest
     - name: K8s cluster kubeconfig file with/ short-lived creds
       run: |
           doctl kubernetes cluster kubeconfig save --expiry-seconds 600 djangos3kuberneeteswebapp
