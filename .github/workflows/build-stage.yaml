@@ -1,4 +1,4 @@
-name: Django CI and Postgres
+name: build stage
 
 on:
   workflow_call:
@@ -26,10 +26,10 @@ jobs:
       working-directory: ./web
       run: |
         docker build -f Dockerfile \
-          -t registry.digitalocean.com/djangos3kuberneeteswebapp/django_s3_kuberneetes_webapp:${GITHUB_SHA::7}-${GITHUB_RUN_ID::5} .
+          -t registry.digitalocean.com/djangos3kuberneeteswebapp/django_s3_kuberneetes_webapp:latest .
     - name: push image
       run: |
-        docker push registry.digitalocean.com/djangos3kuberneeteswebapp/django_s3_kuberneetes_webapp:${GITHUB_SHA::7}-${GITHUB_RUN_ID::5}
+        docker push registry.digitalocean.com/djangos3kuberneeteswebapp/django_s3_kuberneetes_webapp:latest
     - name: K8s cluster kubeconfig file with/ short-lived creds
       run: |
           doctl kubernetes cluster kubeconfig save --expiry-seconds 600 djangos3kuberneeteswebapp
@@ -52,10 +52,5 @@ jobs:
           EOF
           kubectl delete secret django-s3-kubernetes-webapp-prod-env
           kubectl create secret generic django-s3-kubernetes-webapp-prod-env --from-env-file=web/.env.prod
-    - name: Update Deployment image
-      run: |
-        kubectl set image deployment/django-kuberenets-s3-webapp-deployment django-kuberenets-s3-webapp=registry.digitalocean.com/djangos3kuberneeteswebapp/django_s3_kuberneetes_webapp:${GITHUB_SHA::7}-${GITHUB_RUN_ID::5}
-    - name: Wait for rollout to finish
-      run: |
-        kubectl rollout status deployment/django-kuberenets-s3-webapp-deployment
+    
 
