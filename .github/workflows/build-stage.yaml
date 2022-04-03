@@ -51,6 +51,7 @@ jobs:
           POSTGRES_USER=${{ secrets.POSTGRES_USER }}
           POSTGRES_HOST=${{ secrets.POSTGRES_HOST }}
           POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}
+          BOTO_CONFIG=${{ secrets.BOTO_CONFIG }}
           EOF
           kubectl delete secret django-s3-kubernetes-webapp-prod-env
           kubectl create secret generic django-s3-kubernetes-webapp-prod-env --from-env-file=web/.env.prod
