@@ -5,9 +5,9 @@
 <div class="sub-banner overview-bgi">
     <div class="container breadcrumb-area">
         <div class="breadcrumb-areas">
-            <h1>Dashboard</h1>
+            <h1>Profil</h1>
             <ul class="breadcrumbs">
-                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'home' %}">Početna</a></li>
                 <li class="active">{{user.username}}</li>
             </ul>
         </div>
@@ -20,17 +20,17 @@
 <div class="container mt-50 mb-50">
 	{% include 'includes/messages.html' %}
 	<div class="main-title" style="text-align:left !important;">
-            <h1>Welcome <span>{{user.username}}</span></h1>
-            <p>Here are the cars that you have inquired about</p>
+            <h1>Dobrodošao <span>{{user.username}}</span></h1>
+            <p>Evo ih autobili za koje ste zainteresovani</p>
         </div>
 	{% if inquiries %}
 		<table class="table table-hover">
 		<thead>
 			<tr>
 			<th scope="col">#</th>
-			<th scope="col">Car Name</th>
-			<th scope="col">Location</th>
-			<th scope="col">Action</th>
+			<th scope="col">Naziv</th>
+			<th scope="col">Mesto</th>
+			<th scope="col">Akcija</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -39,14 +39,15 @@
 			<th scope="row">1</th>
 			<td>{{inqury.car_title}}</td>
 			<td>{{inqury.city}}</td>
-			<td><a href="{% url 'cars_detail' inqury.car_id %}" class="btn btn-outline-dark">View Car</a></td>
+			<td><a href="{% url 'cars_detail' inqury.car_id %}" class="btn btn-outline-dark">Pogledaj vozilo</a></td>
 			</tr>
 			{% endfor %}
 		</tbody>
 		</table>
 	{% else %}
-		<h4>No inquries yet from you !</h4>
-		<br><br>
+		<h4>Jos niste bili zainteresovani ni za jedan automobil.</h4>
+		<br><br> <br><br>
+		<br><br> <br><br>
 	{% endif %}
 </div>
 

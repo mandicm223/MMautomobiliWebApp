@@ -24,13 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = str(os.environ.get("DEBUG")) == "1"
+#DEBUG = str(os.environ.get("DEBUG")) == "1"
+DEBUG = True
 
 ENV_ALLOWED_HOSTS = os.environ.get("ENV_ALLOWED_HOSTS") 
-if ENV_ALLOWED_HOSTS:
-    ALLOWED_HOSTS = [ENV_ALLOWED_HOSTS]
 
+ALLOWED_HOSTS = ['www.mmautomobili.com' , 'mmautomobili.com' ]
 
+CSRF_TRUSTED_ORIGINS = ['https://www.mmautomobili.com']
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,8 +44,8 @@ INSTALLED_APPS = [
     
     'storages',
     'django_extensions',
-    'ckeditor',
     'django.contrib.humanize',
+    'django_bootstrap_icons',
 
     'pages',
     'cars',
@@ -134,9 +135,9 @@ if DB_IS_AVAIL:
         }
     }
     if not DB_IGNORE_SSL:
-        DATABASES["default"]["OPTIONS"] = {
-            "sslmode": "require"
-        }
+         DATABASES["default"]["OPTIONS"] = {
+             "sslmode": "require"
+         }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -181,7 +182,6 @@ MESSAGE_TAGS = {
     50: 'critical',
 }
 
-SITE_ID = 2
 
 # Email sending
 EMAIL_HOST = 'smtp.gmail.com'
@@ -195,9 +195,10 @@ EMAIL_USE_TLS = True
 
 STATIC_URL = 'static/'
 
-STATIC_ROOT = BASE_DIR / 'staticfiles-cdn'
+STATIC_ROOT = BASE_DIR / 'static'
+
 STATICFILES_DIRS = [
-    BASE_DIR / 'staticfiles'
+    os.path.join(BASE_DIR , 'django_s3_kuberneetes_webapp/static')
 ]
 
-from .cdn.conf import * #noqa
+from .cdn.conf import *

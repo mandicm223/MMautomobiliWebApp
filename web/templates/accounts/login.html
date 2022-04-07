@@ -2,15 +2,13 @@
 {% block title %} | Login{% endblock %}
 {% block content %}
 {% load static %}
-{% load socialaccount %}
-{% providers_media_js %}
 
 <div class="sub-banner overview-bgi">
     <div class="container breadcrumb-area">
         <div class="breadcrumb-areas">
-            <h1>Login To Your Account</h1>
+            <h1>Uloguj se u svoj profil</h1>
             <ul class="breadcrumbs">
-                <li><a href="{% url 'home'%}">Home</a></li>
+                <li><a href="{% url 'home'%}">Početna</a></li>
                 <li class="active">Login</li>
             </ul>
         </div>
@@ -28,7 +26,8 @@
                             <img src="{% static 'img/logos/black-logo.png' %}" alt="logo">
                         </a>
                     </div>
-                    <h3>Sign into your account</h3>
+                    <br>
+                    <h3>Uloguj se u svoj profil</h3>
                     {% include 'includes/messages.html' %}
                     <form action="{% url 'login'%}" method="POST">
                         {% csrf_token %}
@@ -37,22 +36,15 @@
                             <i class="flaticon-mail"></i>
                         </div>
                         <div class="form-group form-box">
-                            <input type="password" name="password" class="input-text" placeholder="Password" required>
+                            <input type="password" name="password" class="input-text" placeholder="Lozinka" required>
                             <i class="flaticon-lock"></i>
                         </div>
                         <div class="form-group mb-0 clearfix">
-                            <button type="submit" class="btn-md btn-theme float-left">Login</button>
+                            <button type="submit" class="btn-md btn-theme float-left">Uloguj se</button>
                         </div>
-                        <div class="extra-login clearfix">
-                            <span>Or Login With</span>
-                        </div>
-                        <div class="clearfix"></div>
-                        <ul class="social-list">
-                            <li><a href="{% provider_login_url 'facebook' method='oauth2' %}" class="facebook-bg"><i class="fa fa-facebook facebook-i"></i><span>Facebook</span></a></li>
-                            <li><a href="{% provider_login_url 'google' %}" class="google-bg"><i class="fa fa-google google-i"></i><span>Google</span></a></li>
-                        </ul>
+                        <br>
                     </form>
-                    <p>Don't have an account? <a href="{% url 'register' %}" class="thembo"> Register here</a></p>
+                    <p>Nemaš profil ?<a href="{% url 'register' %}" class="thembo"> Registruj se ovde</a></p>
                 </div>
             </div>
         </div>

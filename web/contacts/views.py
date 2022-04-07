@@ -40,4 +40,4 @@ def inquiry(request):
 
         contact.save()
         messages.success(request , "You're request has been submited and we will reply to you soon .")
-        return redirect('/cars/single_car/'+car_id)
+        return redirect('dashboard')

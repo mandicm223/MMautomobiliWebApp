@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: django-kuberenets-s3-webapp
-        image: registry.digitalocean.com/djangos3kuberneeteswebapp/django_s3_kuberneetes_webapp:latest
+        image: registry.digitalocean.com/djangos3kuberneeteswebapp/django_s3_kuberneetes_webapp:v23
         imagePullPolicy: Always
         envFrom:
           - secretRef:

@@ -2,15 +2,16 @@
 {% block title %} | Search results  {% endblock %}
 {% block content %}
 {% load humanize %}
+{% load bootstrap_icons %}
 
 <!-- Banner start -->
 <div class="sub-banner overview-bgi">
     <div class="container breadcrumb-area">
         <div class="breadcrumb-areas">
-            <h1>Search Results</h1>
+            <h1>Rezultati pretrage</h1>
             <ul class="breadcrumbs">
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li class="active">Search</li>
+                <li><a href="{% url 'home' %}">Početna</a></li>
+                <li class="active">Pretraži</li>
             </ul>
         </div>
     </div>
@@ -27,7 +28,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
                                 <select class="selectpicker search-fields" name="model">
-                                    <option disabled="disabled" selected="selected">Select Make</option>
+                                    <option disabled="disabled" selected="selected">Model</option>
                                     {% for model in model_search %}
                                     <option value="{{model}}">{{model}}</option>
                                     {% endfor %}
@@ -36,18 +37,8 @@
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
-                                <select class="selectpicker search-fields" name="city">
-                                    <option disabled="disabled" selected="selected">Select Location</option>
-                                    {% for city in city_search %}
-                                    <option value="{{city}}">{{city}}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                            <div class="form-group">
                                 <select class="selectpicker search-fields" name="year">
-                                    <option disabled="disabled" selected="selected">Select Year</option>
+                                    <option disabled="disabled" selected="selected">Godina</option>
                                     {% for year in year_search %}
                                     <option value="{{year}}">{{year}}</option>
                                     {% endfor %}
@@ -59,7 +50,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
                                 <select class="selectpicker search-fields" name="body_style">
-                                    <option disabled="disabled" selected="selected">Select Type Of Car</option>
+                                    <option disabled="disabled" selected="selected">Vrsta karoserije</option>
                                     {% for body_style in body_style_search %}
                                     <option value="{{body_style}}">{{body_style}}</option>
                                     {% endfor %}
@@ -69,7 +60,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
                                 <select class="selectpicker search-fields" name="transmission">
-                                    <option disabled="disabled" selected="selected">Transmission</option>
+                                    <option disabled="disabled" selected="selected">Prenos</option>
                                     {% for transmission in transmission_search %}
                                     <option value="{{transmission}}">{{transmission}}</option>
                                     {% endfor %}
@@ -87,7 +78,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
                                 <button class="btn btn-block button-theme btn-md">
-                                    <i class="fa fa-search"></i>Find
+                                    <i class="fa fa-search"></i>Pretraži
                                 </button>
                             </div>
                         </div>
@@ -104,8 +95,8 @@
     <div class="container">
         <!-- Main title -->
         <div class="main-title">
-            <h1>Here's your <span>Cars</span></h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h1>Evo ih željena <span>vozila</span></h1>
+            <p>Proveri da li smo pronašli ono što ste tražili</p>
         </div>
         <div class="row">
             {% for car in cars %}
@@ -113,18 +104,18 @@
                 <div class="car-box">
                     <div class="car-thumbnail">
                         <a href="{% url 'cars_detail' car.id %}" class="car-img">
-                            <div class="tag">For Sale</div>
+                            <div class="tag">Dostupno</div>
                             <img class="d-block w-100" src="{{car.car_photo.url}}" alt="car" , style="min-height: 262px; max-height: 262px;">
                             <div class="facilities-list clearfix">
                                 <ul>
                                     <li>
-                                        <span><i class="flaticon-way"></i></span>{{car.miles | intcomma }} km
+                                        <span><i {% bs_icon 'signpost' color="red"%}</i></span>{{car.miles | intcomma }} km
                                     </li>
                                     <li>
-                                        <span><i class="flaticon-calendar-1"></i></span>{{car.year}}
+                                        <span><i {% bs_icon 'calendar-date' color="red"%}</i></span>{{car.year}}
                                     </li>
                                     <li>
-                                        <span><i class="flaticon-manual-transmission"></i></span>{{car.transmission}}
+                                        <span><i {% bs_icon 'gear' color="red"%}</i></span>{{car.transmission}}
                                     </li>
                                 </ul>
                             </div>
@@ -134,7 +125,7 @@
                                 <div class="overlap-btns-area">
                                     <div class="car-magnify-gallery">
                                         <a href="{{car.car_photo.url}}" class="overlap-btn">
-                                            <i class="fa fa-expand"></i>
+                                            <i {% bs_icon 'arrows-angle-expand' %}></i>
                                             <img class="hidden" src="{{car.car_photo.url}}">
                                         </a>
                                         {% if car.car_photo1 %}
@@ -172,7 +163,7 @@
                         </h1>
                         <div class="location">
                             <a href="{% url 'cars_detail' car.id %}">
-                                <i class="flaticon-pin"></i>{{car.state}}, {{car.city}}
+                                <i {% bs_icon 'geo-alt' %}</i>{{car.state}}, {{car.city}}
                             </a>
                         </div>
                     </div>
@@ -181,7 +172,7 @@
                             <p class="cartype">{{car.body_style}}</p>
                         </div>
                         <div class="pull-right">
-                            <p class="price">${{car.price | intcomma }}</p>
+                            <p class="price">RSD{{car.price | intcomma }}</p>
                         </div>
                     </div>
                 </div>

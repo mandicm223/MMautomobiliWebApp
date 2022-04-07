@@ -15,10 +15,10 @@ def login(request):
 
         if user is not None:
             auth.login(request , user)
-            messages.success(request , "You are successfully logged in ! ")
+            messages.success(request , "Uspešno ste se ulogovali ! ")
             return redirect('dashboard')
         else:
-            messages.error(request , "Invalid login credentials !")
+            messages.error(request , "Pogrešna lozinka ili username !")
             return redirect('login')
 
     return render(request , 'accounts/login.html')
@@ -34,21 +34,21 @@ def register(request):
 
         if password == confirm_password:
             if User.objects.filter(username=username).exists():
-                messages.error(request , "Username already exists !")
+                messages.error(request , "Username je već u upotrebi !")
                 return redirect('register')
             
             else:
                 if User.objects.filter(email=email).exists():
-                    messages.error(request , "Email already in use !")
+                    messages.error(request , "Email je već u upotrebi !")
                     return redirect('register')
                 
                 else:
                     user = User.objects.create_user(first_name = firstname , last_name = lastname , email = email , username = username , password = password)
                     user.save()
-                    messages.success(request , "You are successfully registered ! ")
+                    messages.success(request , "Uspešno ste se registrovali ! ")
                     return redirect('login')
         else:
-            messages.error(request , "Passwords do not match !")
+            messages.error(request , "Lozinke se ne poklapaju !")
             return redirect('register')
     else:
 
@@ -56,7 +56,7 @@ def register(request):
 
 @login_required(login_url='login')
 def dashboard(request):
-    user_inquiry = Contact.objects.order_by('-created_date').filter(user_id = request.user.id)
+    user_inquiry = Contact.objects.all().filter(user_id = request.user.id)
     data = {
         'inquiries': user_inquiry
     }

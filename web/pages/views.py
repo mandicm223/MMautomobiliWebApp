@@ -54,7 +54,7 @@ def contact(request):
             fail_silently=False,
         )
 
-        messages.success(request , "Your message has been submited. We will reply to you soon. ")
+        messages.success(request , "Vaša poruka je poslata. Odgovorićemo Vam uskoro. ")
         return redirect('contact')
 
     return render(request , "pages/contact.html")

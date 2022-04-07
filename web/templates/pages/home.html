@@ -4,6 +4,7 @@
 {% block content %}
 {% load static %}
 {% load humanize %}
+{% load bootstrap_icons %}
 
 <!-- Banner start -->
 <div class="banner" id="banner">
@@ -12,18 +13,18 @@
             <div class="carousel-item banner-max-height active item-bg">
                 <img class="d-block w-100 h-100" src="{% static 'img/car-1.jpg' %}" alt="banner">
                 <div class="carousel-content container banner-info-2 bi-2 text-left">
-                    <h3>Wow Factor Standard</h3>
-                    <h5>Allow us to guide you through the innovative stress<br>
-                        free approach in finding your dream car.</h5>
-                    <a href="{% url 'services' %}" class="btn btn-lg btn-theme">Read more</a>
+                    <h3>Wow Standardi</h3>
+                    <h5>Dozvolite nam da vas vidimo kroz inovativan pristup <br>
+                        u pronalaženju vožnje iz snova</h5>
+                    <a href="{% url 'contact' %}" class="btn btn-lg btn-theme">Kontaktiraj nas</a>
                     <br>
                     {% if user.is_authenticated %}
 
-                        <a href="{% url 'dashboard' %}" class="btn btn-lg btn-theme">Dashboard</a>
+                        <a href="{% url 'dashboard' %}" class="btn btn-lg btn-theme">Profil</a>
                         
                         <br>
                         
-                        <a href="javascript:{document.getElementById('logout').submit()}" class="btn btn-lg btn-theme">Logout</a>
+                        <a href="javascript:{document.getElementById('logout').submit()}" class="btn btn-lg btn-theme">Izloguj se</a>
                         <form action="{% url 'logout' %}" id="logout" method="POST">
                             {% csrf_token %}
                             <input type="hidden">
@@ -31,11 +32,11 @@
 
                     {% else %}
 
-                        <a href="{% url 'login' %}" class="btn btn-lg btn-theme">Login</a>
+                        <a href="{% url 'login' %}" class="btn btn-lg btn-theme">Uloguj se</a>
                         
                         <br>
                         
-                        <a href="{% url 'register' %}" class="btn btn-lg btn-theme">Register</a>
+                        <a href="{% url 'register' %}" class="btn btn-lg btn-theme">Registruj se</a>
 
                     {% endif %}
                 </div>
@@ -43,18 +44,18 @@
             <div class="carousel-item banner-max-height item-bg">
                 <img class="d-block w-100 h-100" src="{% static 'img/car-2.jpg' %}" alt="banner">
                 <div class="carousel-content container banner-info-2 bi-2 text-left">
-                    <h3>Explore Your Dream Car</h3>
-                    <h5>Allow us to guide you through the innovative stress<br>
-                        free approach in finding your dream car.</h5>
-                    <a href="{% url 'services' %}" class="btn btn-lg btn-theme">Read more</a>
+                    <h3>Istraži omiljeno vozilo</h3>
+                    <h5>Dozvolite nam da vas vidimo kroz inovativan pristup <br>
+                        u pronalaženju vožnje iz snova</h5>
+                    <a href="{% url 'contact' %}" class="btn btn-lg btn-theme">Kontaktiraj nas</a>
                     <br>
                     {% if user.is_authenticated %}
 
-                        <a href="{% url 'dashboard' %}" class="btn btn-lg btn-theme">Dashboard</a>
+                        <a href="{% url 'dashboard' %}" class="btn btn-lg btn-theme">Profil</a>
                         
                         <br>
                         
-                        <a href="javascript:{document.getElementById('logout').submit()}" class="btn btn-lg btn-theme">Logout</a>
+                        <a href="javascript:{document.getElementById('logout').submit()}" class="btn btn-lg btn-theme">Izloguj se</a>
                         <form action="{% url 'logout' %}" id="logout" method="POST">
                             {% csrf_token %}
                             <input type="hidden">
@@ -62,11 +63,11 @@
 
                     {% else %}
 
-                        <a href="{% url 'login' %}" class="btn btn-lg btn-theme">Login</a>
+                        <a href="{% url 'login' %}" class="btn btn-lg btn-theme">Uloguj se</a>
                         
                         <br>
                         
-                        <a href="{% url 'register' %}" class="btn btn-lg btn-theme">Register</a>
+                        <a href="{% url 'register' %}" class="btn btn-lg btn-theme">Registruj se</a>
 
                     {% endif %}
                 </div>
@@ -74,18 +75,18 @@
             <div class="carousel-item banner-max-height item-bg">
                 <img class="d-block w-100 h-100" src="{% static 'img/car-3.jpg' %}" alt="banner">
                 <div class="carousel-content container banner-info-2 bi-2 text-left">
-                    <h3>We Are Wheel</h3>
-                    <h5>Allow us to guide you through the innovative stress<br>
-                        free approach in finding your dream car.</h5>
-                    <a href="{% url 'services' %}" class="btn btn-lg btn-theme">Read more</a>
+                    <h3>Vi ste pravi izbor</h3>
+                    <h5>Dozvolite nam da vas vidimo kroz inovativan pristup <br>
+                        u pronalaženju vožnje iz snova</h5>
+                    <a href="{% url 'contact' %}" class="btn btn-lg btn-theme">Kontaktiraj nas</a>
                     <br>
                     {% if user.is_authenticated %}
 
-                        <a href="{% url 'dashboard' %}" class="btn btn-lg btn-theme">Dashboard</a>
+                        <a href="{% url 'dashboard' %}" class="btn btn-lg btn-theme">Profil</a>
                         
                         <br>
                         
-                        <a href="javascript:{document.getElementById('logout').submit()}" class="btn btn-lg btn-theme">Logout</a>
+                        <a href="javascript:{document.getElementById('logout').submit()}" class="btn btn-lg btn-theme">Izloguj se</a>
                         <form action="{% url 'logout' %}" id="logout" method="POST">
                             {% csrf_token %}
                             <input type="hidden">
@@ -93,11 +94,11 @@
 
                     {% else %}
 
-                        <a href="{% url 'login' %}" class="btn btn-lg btn-theme">Login</a>
+                        <a href="{% url 'login' %}" class="btn btn-lg btn-theme">Uloguj se</a>
                         
                         <br>
                         
-                        <a href="{% url 'register' %}" class="btn btn-lg btn-theme">Register</a>
+                        <a href="{% url 'register' %}" class="btn btn-lg btn-theme">Registruj se</a>
 
                     {% endif %}
                 </div>
@@ -107,7 +108,7 @@
         <div class="search-box-4 sb-8">
             <form action="{% url 'search' %}" method="">
                 <div class="form-group">
-                    <input type="text" name="keyword" placeholder="Search by name" class="form-control">
+                    <input type="text" name="keyword" placeholder="Upiši ime" class="form-control">
                 </div>
                 <div class="form-group">
                     <select class="form-control search-fields" name="model">
@@ -118,16 +119,8 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <select class="form-control search-fields" name="city">
-                        <option selected="true" disabled="disabled">Location</option>
-                        {% for city in city_search %}
-                        <option value="{{city}}">{{city}}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <div class="form-group">
                     <select class="form-control search-fields" name="year">
-                        <option selected="true" disabled="disabled">Year</option>
+                        <option selected="true" disabled="disabled">Godina</option>
                         {% for year in year_search %}
                         <option value="{{year}}">{{year}}</option>
                         {% endfor %}
@@ -135,20 +128,20 @@
                 </div>
                 <div class="form-group">
                     <select class="form-control search-fields" name="body_style">
-                        <option selected="true" disabled="disabled">Select Type Of Car</option>
+                        <option selected="true" disabled="disabled">Vrsta karoserije</option>
                         {% for body_style in body_style_search %}
                         <option value="{{body_style}}">{{body_style}}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="range-slider clearfix">
-                                <label>Price</label>
+                                <label>Cena</label>
                                 <div data-min="0" data-max="150000"  data-min-name="min_price" data-max-name="max_price" data-unit="USD" class="range-slider-ui ui-slider" aria-disabled="false"></div>
                                 <div class="clearfix"></div>
                             </div>
                 <div class="form-group">
                     <button class="btn btn-block button-theme btn-md">
-                        <i class="fa fa-search"></i> Search
+                        <i {% bs_icon 'search' %}</i> Pretraži
                     </button>
                 </div>
             </form>
@@ -156,12 +149,12 @@
         <!-- Search box 3 end -->
         <a class="carousel-control-prev none-580" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="slider-mover-left" aria-hidden="true">
-                <i class="fa fa-angle-left"></i>
+                <i {% bs_icon 'chevron-compact-left' %}</i>
             </span>
         </a>
         <a class="carousel-control-next none-580" href="#carouselExampleIndicators" role="button" data-slide="next">
             <span class="slider-mover-right" aria-hidden="true">
-                <i class="fa fa-angle-right"></i>
+                <i {% bs_icon 'chevron-compact-right' %}</i>
             </span>
         </a>
     </div>
@@ -175,8 +168,8 @@
     <div class="container">
         <!-- Main title -->
         <div class="main-title">
-            <h1>Featured <span>Cars</span></h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h1>Dostupni <span>trenutno</span></h1>
+            <p>Automobili trenutno dostupni za iznajmljivanje</p>
         </div>
         <!-- Slick slider area start -->
         <div class="slick-slider-area clearfix">
@@ -186,9 +179,9 @@
                     <div class="car-box-3">
                         <div class="car-thumbnail">
                             <a href="{% url 'cars_detail' car.id %}" class="car-img">
-                                <div class="tag-2">Featured</div>
+                                <div class="tag-2">Dostupno</div>
                                 <div class="price-box">
-                                    <span>${{car.price | intcomma }}</span>
+                                    <span>RSD{{car.price | intcomma }}</span>
                                 </div>
                                 <img class="d-block w-100" src="{{car.car_photo.url}}" alt="car" , style="min-height: 262px; max-height: 262px;">
                             </a>
@@ -197,12 +190,12 @@
                                     <div class="overlap-btns-area">
                                         <div class="car-magnify-gallery">
                                             <a href="{{ car.car_photo.url }}" class="overlap-btn">
-                                                <i class="fa fa-expand"></i>
+                                                <i {% bs_icon 'arrows-angle-expand' %}</i>
                                                 <img class="hidden" src="{{car.car_photo.url}}">
                                             </a>
                                             {% if car.car_photo1 %}
                                             <a href="{{ car.car_photo1.url }}" class="hidden">
-                                                <i class="fa fa-expand"></i>
+                                                <i {% bs_icon 'arrows-angle-expand' %}</i>
                                                 <img class="hidden" src="{{car.car_photo1.url}}">
                                             </a>
                                             {% endif %}
@@ -235,7 +228,7 @@
                             </h1>
                             <div class="location">
                                 <a href="{% url 'cars_detail' car.id %}">
-                                    <i class="flaticon-pin"></i>{{car.state}} , {{car.city}}
+                                    <i {% bs_icon 'geo-alt' %}</i>{{car.state}} , {{car.city}}
                                 </a>
                             </div>
                             <ul class="facilities-list clearfix">
@@ -253,10 +246,10 @@
             </div>
             <div class="slick-btn">
                 <div class="slick-prev slick-arrow-buton sab-4">
-                    <i class="fa fa-angle-left"></i>
+                    <i {% bs_icon 'chevron-left' %}</i>
                 </div>
                 <div class="slick-next slick-arrow-buton sab-3">
-                    <i class="fa fa-angle-right"></i>
+                    <i {% bs_icon 'chevron-right' %}</i>
                 </div>
             </div>
         </div>
@@ -269,8 +262,8 @@
     <div class="container">
         <!-- Main title -->
         <div class="main-title">
-            <h1>Latest <span>Cars</span></h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h1>Novo u<span> ponudi</span></h1>
+            <p>Najnoviji automobili dostupni za iznajmljivanje</p>
         </div>
         <div class="row">
             {% for car in all_cars %}
@@ -278,18 +271,18 @@
                 <div class="car-box">
                     <div class="car-thumbnail">
                         <a href="{% url 'cars_detail' car.id %}" class="car-img">
-                            <div class="tag">For Sale</div>
+                            <div class="tag">Dostupno</div>
                             <img class="d-block w-100" src="{{car.car_photo.url}}" alt="car" , style="min-height: 262px; max-height: 262px;">
                             <div class="facilities-list clearfix">
                                 <ul>
                                     <li>
-                                        <span><i class="flaticon-way"></i></span>{{car.miles | intcomma }} km
+                                        <span><i {% bs_icon 'signpost' color="red"%}</i></span>{{car.miles | intcomma }} km
                                     </li>
                                     <li>
-                                        <span><i class="flaticon-calendar-1"></i></span>{{car.year}}
+                                        <span><i {% bs_icon 'calendar-date' color="red"%}</i></span>{{car.year}}
                                     </li>
                                     <li>
-                                        <span><i class="flaticon-manual-transmission"></i></span>{{car.transmission}}
+                                        <span><i {% bs_icon 'gear' color="red"%}</i></span>{{car.transmission}}
                                     </li>
                                 </ul>
                             </div>
@@ -299,7 +292,7 @@
                                 <div class="overlap-btns-area">
                                     <div class="car-magnify-gallery">
                                         <a href="{{car.car_photo.url}}" class="overlap-btn">
-                                            <i class="fa fa-expand"></i>
+                                            <i {% bs_icon 'arrows-angle-expand' %}</i>
                                             <img class="hidden" src="{{car.car_photo.url}}">
                                         </a>
                                         {% if car.car_photo1 %}
@@ -337,7 +330,7 @@
                         </h1>
                         <div class="location">
                             <a href="{% url 'cars_detail' car.id %}">
-                                <i class="flaticon-pin"></i>{{car.state}}, {{car.city}}
+                                <i {% bs_icon 'geo-alt' %}</i>{{car.state}}, {{car.city}}
                             </a>
                         </div>
                     </div>
@@ -346,7 +339,7 @@
                             <p class="cartype">{{car.body_style}}</p>
                         </div>
                         <div class="pull-right">
-                            <p class="price">${{car.price | intcomma }}</p>
+                            <p class="price">RSD{{car.price | intcomma }}</p>
                         </div>
                     </div>
                 </div>
@@ -363,8 +356,8 @@
     <div class="container">
         <!-- Main title -->
         <div class="main-title">
-            <h1>Executive <span>Team</span></h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+            <h1>Izvršni <span> tim</span></h1>
+            <p>Zaposleni zaduženi za najugodniju uslugu.</p>
         </div>
         <!-- Slick slider area start -->
         <div class="slick-slider-area clearfix">
@@ -377,9 +370,9 @@
                                 <img src="{{ team.photo.url }}" alt="team-1" class="img-fluid">
                             </a>
                             <div class="social-list clearfix">
-                                <a href="{{team.facebook_url}}" target="_blank" class="facebook-bg"><i class="fa fa-facebook"></i></a>
-                                <a href="{{team.twitter_url}}" target="_blank" class="twitter-bg"><i class="fa fa-twitter"></i></a>
-                                <a href="{{team.google_plus_url}}" target="_blank" class="google-bg"><i class="fa fa-google"></i></a>
+                                <a href="{{team.facebook_url}}" target="_blank" class="facebook-bg"><i {% bs_icon 'facebook' %}</i></a>
+                                <a href="{{team.twitter_url}}" target="_blank" class="twitter-bg"><i {% bs_icon 'twitter' %}</i></a>
+                                <a href="{{team.google_plus_url}}" target="_blank" class="google-bg"><i {% bs_icon 'google' %}</i></a>
                             </div>
                         </div>
                         <div class="details">
@@ -401,11 +394,11 @@
         <div class="row">
             <div class="col-lg-9 col-md-8 col-sm-12">
                 <div class="intro-text">
-                    <h3>Do You Have Questions ?</h3>
+                    <h3>Imate li nekih pitanja ?</h3>
                 </div>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="{% url 'contact' %}" class="btn btn-md">Get in Touch</a>
+                <a href="{% url 'contact' %}" class="btn btn-md">Kontaktirajte nas</a>
             </div>
         </div>
     </div>
@@ -421,8 +414,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="modal-title" id="carOverviewModalLabel">
-                        <h4>Explore Your Dream Car</h4>
-                        <h5><i class="flaticon-pin"></i> 123 Kathal St. Tampa City,</h5>
+                        <h4>Istrazi svoj omiljeni auto/h4>
+                        <h5><i class="flaticon-pin"></i>Sombor , Stanišić</h5>
                     </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>

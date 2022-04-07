@@ -3,13 +3,14 @@
 {% block content %}
 {% load static %}
 {% load humanize %}
+{% load bootstrap_icons %}
 <!-- Sub banner start -->
 <div class="sub-banner overview-bgi">
     <div class="container breadcrumb-area">
         <div class="breadcrumb-areas">
             <h1>{{single_car.car_title}}</h1>
             <ul class="breadcrumbs">
-                <li><a href="{% url 'home'%}">Home</a></li>
+                <li><a href="{% url 'home'%}">Početna</a></li>
                 <li class="active">{{single_car.car_title}}</li>
             </ul>
         </div>
@@ -29,11 +30,11 @@
                         <div class="pull-left">
                             <h3>{{single_car.car_title}}</h3>
                             <h6>
-                                <i class="flaticon-pin"></i>{{single_car.state}}, {{single_car.tutle }}
+                                <i {% bs_icon 'geo-alt' %}</i>{{single_car.state}}, {{single_car.title }}
                             </h6>
                         </div>
                         <div class="pull-right">
-                            <h3><span>${{single_car.price | intcomma }}</span></h3>
+                            <h3><span>RSD{{single_car.price | intcomma }}</span></h3>
                         </div>
                     </div>
                     <div id="carDetailsSlider" class="carousel car-details-sliders slide mb-40">
@@ -115,17 +116,17 @@
                     <div class="tabbing tabbing-box mb-40">
                         <ul class="nav nav-tabs" id="carTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active show" id="one-tab" data-toggle="tab" href="#one" role="tab" aria-controls="one" aria-selected="false">Vehicle overview</a>
+                                <a class="nav-link active show" id="one-tab" data-toggle="tab" href="#one" role="tab" aria-controls="one" aria-selected="false">Opis vozila</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="two-tab" data-toggle="tab" href="#two" role="tab" aria-controls="two" aria-selected="false">Features</a>
+                                <a class="nav-link" id="two-tab" data-toggle="tab" href="#two" role="tab" aria-controls="two" aria-selected="false">Karakteristike</a>
                             </li>
                         </ul>
                         <div class="tab-content" id="carTabContent">
                             <div class="tab-pane fade active show" id="one" role="tabpanel" aria-labelledby="one-tab">
                                 <div class="car-description mb-50">
                                     <h3 class="heading-2">
-                                        Description
+                                        Opis
                                     </h3>
                                     <p>{{single_car.description | safe }}</p>
                                    
@@ -133,7 +134,7 @@
                             </div>
                             <div class="tab-pane fade" id="two" role="tabpanel" aria-labelledby="two-tab">
                                 <div class="features-info mb-50">
-                                    <h3 class="heading-2">Features</h3>
+                                    <h3 class="heading-2">Karakteristike</h3>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                             <ul>
@@ -160,43 +161,40 @@
 
 
                         <br>
-                        <h3 class="sidebar-title">Refine Your Search</h3>
+                        <h3 class="sidebar-title">Pretraži</h3>
                         <ul>
                             <li>
-                                <span>Year:</span>{{single_car.year}}
+                                <span>Godina:</span>{{single_car.year}}
                             </li>
                             <li>
-                                <span>Body Style:</span>{{single_car.body_style}}
+                                <span>Vrsta karoserije:</span>{{single_car.body_style}}
                             </li>
                             <li>
-                                <span>Engine:</span>{{single_car.engine}}
+                                <span>Motor:</span>{{single_car.engine}}
                             </li>
                             <li>
-                                <span>Transmission:</span>{{single_car.transmission}}
+                                <span>Prenos:</span>{{single_car.transmission}}
                             </li>
                             <li>
-                                <span>Exaterion:</span>{{single_car.color}}
+                                <span>Boja:</span>{{single_car.color}}
                             </li>
                             <li>
-                                <span>Interior:</span>{{single_car.interior}}
+                                <span>Unutrašnjost:</span>{{single_car.interior}}
                             </li>
                             <li>
-                                <span>Miles:</span>{{single_car.miles | intcomma}}km
+                                <span>Kilometraža:</span>{{single_car.miles | intcomma}}km
                             </li>
                             <li>
-                                <span>Doors:</span>{{single_car.doors}}
+                                <span>Vrata:</span>{{single_car.doors}}
                             </li>
                             <li>
-                                <span>Passengers:</span>{{single_car.passengers}}
+                                <span>Putnici:</span>{{single_car.passengers}}
                             </li>
                             <li>
-                                <span>Fuel Type:</span>{{single_car.fuel_type}}
+                                <span>Gorivo:</span>{{single_car.fuel_type}}
                             </li>
                             <li>
-                                <span>Condition:</span>{{single_car.condition}}
-                            </li>
-                            <li>
-                                <span>Owners:</span>{{single_car.no_of_owners}}
+                                <span>Stanje:</span>{{single_car.condition}}
                             </li>
                             <li>
                                 <span>Vin #:</span>{{single_car.vin_no}}
@@ -228,7 +226,7 @@
                                 <input type="hidden" name="car_id" value="{{single_car.id}}">
 
                                 <div class="form-group">
-                                  <label for="name" class="col-form-label">Hello, My Name is</label>
+                                  <label for="name" class="col-form-label">Pozdrav, moje ime je</label>
                                   <div class="row">
                                     <div class="col">
                                       <input type="text" name="first_name" class="form-control" placeholder="First Name" 
@@ -242,10 +240,9 @@
                                 </div>
                                   <div class="form-group">
                                       <select class="form-control" id="sel1" name="costumer_need">
-                                        <option value="I'm interested in this">I'm interested in this</option>
-                                        <option value="I'd like to know your best price for this">I'd like to know your best price for this</option>
-                                        <option value="I'd like to test drive this">I'd like to test drive this</option>
-                                        <option value="I'd like a history report for this">I'd like a history report for this</option>
+                                        <option value="I'm interested in this">Zainteresovan sam za</option>
+                                        <option value="I'd like to know your best price for this">Voleo bih da znam najbolju cenu za</option>
+                                        <option value="I'd like a history report for this">Želeo bih da znam istoriju ovog automobila</option>
                                       </select>
                                     </div>
                                 
@@ -254,7 +251,7 @@
                                 </div>
                                
                                 <div class="form-group">
-                                  <label for="name" class="col-form-label">I live in</label>
+                                  <label for="name" class="col-form-label">Živim u</label>
                                   <div class="row">
                                     <div class="col">
                                       <input type="text" name="city" class="form-control" placeholder="City" required>
@@ -268,19 +265,19 @@
                                 <div class="form-group">
                                   <div class="row">
                                     <div class="col">
-                                        <label for="name" class="col-form-label">You can reach me by email at</label>
+                                        <label for="name" class="col-form-label">Možete mi se javiti na email</label>
                                       <input type="email" name="email" class="form-control" placeholder="Email Address" 
                                       {% if user.is_authenticated %} value="{{user.email}}" {% endif %} required>
                                     </div>
                                     <div class="col">
-                                        <label for="phone" class="col-form-label">or by phone at</label>
+                                        <label for="phone" class="col-form-label">ili putem telefona</label>
                                       <input type="text" name="phone" placeholder="Phone Number (optional)" class="form-control">
                                     </div>
                                   </div>
                                 </div>
 
                                 <div class="form-group">
-                                  <label for="message" class="col-form-label">Add comments</label>
+                                  <label for="message" class="col-form-label">Dodaj komentar</label>
                                   <textarea name="message" class="form-control" placeholder="Enter your message here (optional)"></textarea>
                                 </div>
                                 <hr>
@@ -292,27 +289,18 @@
                     </div>
                     <!-- Question start -->
                     <div class="widget question">
-                        <h5 class="sidebar-title">Get a Question?</h5>
+                        <h5 class="sidebar-title">Imaš pitanje?</h5>
                         <ul class="contact-info">
                             <li>
-                                <i class="flaticon-pin"></i>20/F Green Road, Dhanmondi
+                                <i {% bs_icon 'geo-alt' color="red"%}</i></i>173/Vuka Karadžića 
                             </li>
                             <li>
-                                <i class="flaticon-mail"></i><a href="mailto:info@themevessel.com">info@themevessel.com</a>
+                                <i {% bs_icon 'envelope' color="red"%}</i><a href="mailto:mandicm223@gmail.com"> mmautomobili@gmail.com</a>
                             </li>
                             <li>
-                                <i class="flaticon-phone"></i><a href="tel:+0477-85x6-552">+0477 85x6 552</a>
+                                <i {% bs_icon 'telephone-fill' color="red"%}</i><a href="tel:+0477-85x6-552">+66 433 070</a>
                             </li>
                         </ul>
-                        <div class="social-list clearfix">
-                            <ul>
-                                <li><a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#" class="google-bg"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#" class="rss-bg"><i class="fa fa-rss"></i></a></li>
-                                <li><a href="#" class="linkedin-bg"><i class="fa fa-linkedin"></i></a></li>
-                            </ul>
-                        </div>
                     </div>
                     
                 </div>

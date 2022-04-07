@@ -3,14 +3,13 @@ name: build stage
 on:
   workflow_call:
   workflow_dispatch:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
 
 jobs:
+  django_test_job:
+    uses: mandicm223/MMautomobiliWebApp/.github/workflows/django-test.yaml@main
   build:
     runs-on: ubuntu-latest
+    needs: [django_test_job]
     env:
       DJANGO_SECRET_KEY: testingkey
     steps:
@@ -58,4 +57,9 @@ jobs:
     - name: Wait for rollout to finish
       run: |
         kubectl rollout status deployment/django-kuberenets-s3-webapp-deployment
+    - name: Post-build Django Commands - Migrate / Collectstatic
+      run: |
+        export SINGLE_POD_NAME=$(kubectl get pod -l app=django-kuberenets-s3-webapp-deployment -o jsonpath="{.items[0].metadata.name}")
+        kubectl exec -it $SINGLE_POD_NAME -- bash /app/migrate.sh
+        kubectl exec -it $SINGLE_POD_NAME -- bash /app/collectstatic.sh
 
