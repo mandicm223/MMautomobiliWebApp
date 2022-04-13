@@ -201,4 +201,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR , 'django_s3_kuberneetes_webapp/static')
 ]
 
+SITE_ID=3
+
 from .cdn.conf import *

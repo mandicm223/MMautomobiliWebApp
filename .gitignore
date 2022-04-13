@@ -1,4 +1,6 @@
+web/deployment-guide.md
 web/.env
+k8s/build-push-notes.md
 web/.env.prod
 .kube/
 # Byte-compiled / optimized / DLL files

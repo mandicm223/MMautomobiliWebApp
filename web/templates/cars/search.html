@@ -70,7 +70,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
                                 <div class="range-slider">
-                                    <div data-min="0" data-max="150000" data-unit="USD" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider" aria-disabled="false"></div>
+                                    <div data-min="0" data-max="10000" data-unit="RSD" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider" aria-disabled="false"></div>
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
                                 <button class="btn btn-block button-theme btn-md">
-                                    <i class="fa fa-search"></i>Pretraži
+                                    <i {% bs_icon 'search' %}</i></i>Pretraži
                                 </button>
                             </div>
                         </div>
@@ -125,7 +125,7 @@
                                 <div class="overlap-btns-area">
                                     <div class="car-magnify-gallery">
                                         <a href="{{car.car_photo.url}}" class="overlap-btn">
-                                            <i {% bs_icon 'arrows-angle-expand' %}></i>
+                                            <i {% bs_icon 'arrows-angle-expand' %}</i>
                                             <img class="hidden" src="{{car.car_photo.url}}">
                                         </a>
                                         {% if car.car_photo1 %}
