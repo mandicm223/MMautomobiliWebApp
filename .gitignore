@@ -3,6 +3,7 @@ web/.env
 k8s/build-push-notes.md
 web/.env.prod
 .kube/
+web\media
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
